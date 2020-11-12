@@ -15,15 +15,6 @@ export class UserService {
     return user;
   }
 
-  async createUser(data: any): Promise<User> {
-    const userData: CreateUserDto = data;
-    const createdUser = new this.user({
-      ...userData,
-    });
-    const savedUser = await createdUser.save();
-    return savedUser;
-  }
-
   async modifyUser(id: string, data: any): Promise<User> {
     const userData: CreateUserDto = data;
     const user = await this.user.findByIdAndUpdate(id, userData, {

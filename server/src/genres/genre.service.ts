@@ -17,10 +17,10 @@ export class GenreService {
 
   async createGenre(data: any): Promise<Genre> {
     const genreData: CreateGenreDto = data;
-    const createdTag = new this.genre({
+    const createdGenre = new this.genre({
       ...genreData,
     });
-    const savedGenre = await createdTag.save();
+    const savedGenre = await createdGenre.save();
     return savedGenre;
   }
 

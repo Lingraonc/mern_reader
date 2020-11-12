@@ -27,8 +27,7 @@ class UserController implements Controller {
         validationMiddleware(CreateUserDto),
         this.modifyUser
       )
-      .delete(`${this.path}/:id`, checkMongoId("id"), this.deleteUser)
-      .post(this.path, validationMiddleware(CreateUserDto), this.createUser);
+      .delete(`${this.path}/:id`, checkMongoId("id"), this.deleteUser);
   }
 
   private getAllUsers = async (request: Request, response: Response) => {
@@ -62,12 +61,6 @@ class UserController implements Controller {
     } else {
       next(new NotFoundException(`Genre with id ${id} not found`));
     }
-  };
-
-  private createUser = async (request: Request, response: Response) => {
-    const savedUser = await this.userService.createUser(request.body);
-    //await savedUser.populate("creatorId", "-password").execPopulate();
-    response.send(savedUser);
   };
 
   private deleteUser = async (

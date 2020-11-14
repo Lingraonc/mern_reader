@@ -5,6 +5,7 @@ interface User {
   lastName: string;
   email: string;
   password: string;
+  role: string;
   avatar?: string;
 }
 

@@ -37,4 +37,15 @@ export class UserService {
     const users = await this.user.find(ids);
     return ids.length === users.length;
   }
+
+  async changeUserGroup(id: string, group: string): Promise<User> {
+    const user = await this.user.findByIdAndUpdate(
+      id,
+      { group },
+      {
+        new: true,
+      }
+    );
+    return user;
+  }
 }

@@ -8,17 +8,21 @@ import validationMiddleware from "../middleware/validation.middleware";
 import CreateUserDto from "../users/user.dto";
 import User from "../users/user.interface";
 import userModel from "./../users/user.model";
-import AuthenticationService from "./auth.service";
+import AuthService from "./auth.service";
 import LogInDto from "./logIn.dto";
 import NotFoundException from "../exceptions/NotFoundException";
+import { SettingService } from "../settings/setting.service";
 
 class AuthController implements Controller {
   public path = "";
   public router = Router();
-  public authenticationService = new AuthenticationService();
+  public authService: AuthService;
+  public settingService: SettingService;
   private user = userModel;
 
   constructor() {
+    this.authService = new AuthService();
+    this.settingService = new SettingService();
     this.initializeRoutes();
   }
 
@@ -43,11 +47,15 @@ class AuthController implements Controller {
   ) => {
     const userData: CreateUserDto = request.body;
     try {
-      const { cookie, user } = await this.authenticationService.register(
-        userData
-      );
-      response.setHeader("Set-Cookie", [cookie]);
-      response.send(user);
+      const defaultUserRole = await this.settingService.getDefaultUserRole();
+      if (defaultUserRole) {
+        const { cookie, user } = await this.authService.register(
+          userData,
+          defaultUserRole.value
+        );
+        response.setHeader("Set-Cookie", [cookie]);
+        response.send(user);
+      }
     } catch (error) {
       next(error);
     }

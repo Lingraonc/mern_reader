@@ -10,15 +10,17 @@ import BadRequestExeption from "../exceptions/BadRequestExeption";
 class AuthService {
   public user = userModel;
 
-  public async register(userData: CreateUserDto) {
+  public async register(userData: CreateUserDto, role: string) {
     if (await this.user.findOne({ email: userData.email })) {
       throw new BadRequestExeption(
         `User with ${userData.email} is already exists`
       );
     }
     const hashedPassword = await bcrypt.hash(userData.password, 10);
+
     const user = await this.user.create({
       ...userData,
+      role,
       password: hashedPassword,
     });
     const tokenData = this.createToken(user);

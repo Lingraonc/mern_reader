@@ -8,6 +8,7 @@ import ChapterController from "./chapters/chapter.controller";
 import AuthController from "./Auth/auth.controller";
 import RoleController from "./roles/role.controller";
 import PermissionController from "./permissions/permission.controller";
+import SettingController from "./settings/setting.controller";
 
 const app = new App([
   new BookController(),
@@ -18,6 +19,7 @@ const app = new App([
   new AuthController(),
   new RoleController(),
   new PermissionController(),
+  new SettingController(),
 ]);
 
 app.listen();

@@ -1,8 +1,9 @@
 import { PermissionService } from "../permissions/permission.service";
 import { RoleService } from "../roles/role.service";
-import AuthService from "../Auth/auth.service";
+import AuthService from "../auth/auth.service";
 import { SettingService } from "../settings/setting.service";
 import { initProjectData } from "./initProjectData";
+import KanjiParser from "../parsers/kanji/kanji.parser";
 
 class InitProjectSeed {
   private permissionService: PermissionService;
@@ -41,7 +42,12 @@ class InitProjectSeed {
         await this.authService.register(user, defaultAdminRole.value);
       }
       console.log("Project init successful!");
+      this.initKanjiParse();
     }
+  }
+
+  private initKanjiParse() {
+    new KanjiParser();
   }
 }
 

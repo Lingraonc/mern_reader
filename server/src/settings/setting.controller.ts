@@ -64,7 +64,10 @@ class SettingController implements Controller {
     next: NextFunction
   ) => {
     const id = request.params.id;
-    const setting = await this.settingService.modifySetting(id, request.body);
+    const setting = await this.settingService.modifySetting({
+      ...request.body,
+      id,
+    });
     if (setting) {
       response.send(setting);
     } else {

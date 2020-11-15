@@ -63,6 +63,11 @@ export const initProjectData = {
       isActive: true,
       isEditable: false,
     },
+    {
+      name: "Kanji parser init",
+      isActive: false,
+      isEditable: true,
+    },
   ],
   users: [
     {

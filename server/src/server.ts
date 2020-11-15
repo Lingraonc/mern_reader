@@ -5,7 +5,7 @@ import TagController from "./tags/tag.controller";
 import GenreController from "./genres/genre.controller";
 import UserController from "./users/user.controller";
 import ChapterController from "./chapters/chapter.controller";
-import AuthController from "./Auth/auth.controller";
+import AuthController from "./auth/auth.controller";
 import RoleController from "./roles/role.controller";
 import PermissionController from "./permissions/permission.controller";
 import SettingController from "./settings/setting.controller";

@@ -2,7 +2,6 @@ import * as bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
 import Controller from "./interfaces/controller.interface";
-//import errorMiddleware from './middleware/error.middleware';
 import * as dotenv from "dotenv";
 import InitProjectSeed from "./seeds/initProjectSeed";
 dotenv.config();
@@ -52,6 +51,7 @@ class App {
       console.log("MongoDB database connection established successfully");
     });
   }
+
   private initProject() {
     new InitProjectSeed();
   }

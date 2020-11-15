@@ -24,11 +24,16 @@ export class SettingService {
     return savedSetting;
   }
 
-  async modifySetting(id: string, data: any): Promise<Setting> {
+  async modifySetting(data: any): Promise<Setting> {
     const settingData: CreateSettingDto = data;
-    const setting = await this.setting.findByIdAndUpdate(id, settingData, {
-      new: true,
-    });
+    console.log(settingData);
+    const setting = await this.setting.findByIdAndUpdate(
+      settingData._id,
+      settingData,
+      {
+        new: true,
+      }
+    );
     return setting;
   }
 
@@ -54,6 +59,11 @@ export class SettingService {
 
   async getDefaultAdminRole(): Promise<Setting> {
     const setting = await this.setting.findOne({ name: "Default admin group" });
+    return setting;
+  }
+
+  async getSettingByName(name: string): Promise<Setting> {
+    const setting = await this.setting.findOne({ name });
     return setting;
   }
 }

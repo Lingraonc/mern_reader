@@ -9,6 +9,7 @@ import AuthController from "./auth/auth.controller";
 import RoleController from "./roles/role.controller";
 import PermissionController from "./permissions/permission.controller";
 import SettingController from "./settings/setting.controller";
+import KanjiController from "./kanji/kanji.controller";
 
 const app = new App([
   new BookController(),
@@ -20,6 +21,7 @@ const app = new App([
   new RoleController(),
   new PermissionController(),
   new SettingController(),
+  new KanjiController(),
 ]);
 
 app.listen();

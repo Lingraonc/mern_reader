@@ -34,7 +34,7 @@ export class KanjiService {
   async getRandomKanjiByGrade(grade: number): Promise<Kanji[]> {
     const kanji = await this.kanji
       .aggregate([])
-      .match({ references: { grade } })
+      .match({ "references.grade": {$eq: grade }  })
       .sample(1);
     return kanji;
   }

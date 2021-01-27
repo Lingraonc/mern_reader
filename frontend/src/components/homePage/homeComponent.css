@@ -1,0 +1,25 @@
+.home-kanji-block {
+    text-align: center;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.home-kanji-block h1 {
+    font-size: 25px;
+    margin-top: 40px;
+}
+
+.kanji-archive {
+    margin-top: 20px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.home-kanji-block a {
+    padding: 10px;
+    border: 1px solid #737373;
+    color: #bfbfbf;
+    font-size: 30px;
+}

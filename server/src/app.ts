@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import Controller from "./interfaces/controller.interface";
 import * as dotenv from "dotenv";
 import InitProjectSeed from "./seeds/initProjectSeed";
+import cors from "cors";
 dotenv.config();
 
 class App {
@@ -30,6 +31,7 @@ class App {
 
   private initializeMiddlewares() {
     this.app.use(bodyParser.json());
+    this.app.use(cors());
   }
 
   private initializeErrorHandling() {}

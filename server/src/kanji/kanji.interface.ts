@@ -30,6 +30,7 @@ type examples = {
 };
 
 interface Kanji {
+  _id: string;
   kanji: kanji;
   radical: radical;
   references: references;

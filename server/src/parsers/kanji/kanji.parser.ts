@@ -19,6 +19,7 @@ class KanjiParser {
         "https://kanjialive-api.p.rapidapi.com/api/public/kanji/all",
         headers
       );
+      console.log(kanji.data);
       const savingResult = await this.kanjiService.saveMultipleKanji(
         kanji.data
       );

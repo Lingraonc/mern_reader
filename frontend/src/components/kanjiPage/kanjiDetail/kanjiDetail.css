@@ -1,0 +1,47 @@
+.kanji-details h3 {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 27px;
+}
+
+.row-double {
+    display: flex;
+    justify-content: space-around;
+}
+
+.kanji-details p {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-family: "Roboto";
+    line-height: 20px;
+}
+
+p.kanji-text {
+    font-size: 25px;
+    line-height: 27px;
+    margin: 5px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.painting-image {
+    max-width: 200px;
+    height: auto;
+}
+
+.row-third {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px ;
+}
+
+.row-third p,
+.row-third div {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    width: 33.33%;
+}

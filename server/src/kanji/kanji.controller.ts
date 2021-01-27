@@ -18,6 +18,8 @@ class KanjiController implements Controller {
 
     private initializeRoutes() {
         this.router.get(this.path, this.getAllKanji);
+        this.router.get(`${this.path}/popular`, this.getPopularKanji);
+        this.router.get(`${this.path}/find/:name`, this.getKanjiByName);
         this.router.get(`${this.path}/:grade`, this.getKanjiByGrade);
         this.router
             .all(`${this.path}/*`)
@@ -28,6 +30,20 @@ class KanjiController implements Controller {
         const kanjis = await this.kanjiService.getAllKanji();
         response.send(kanjis);
     };
+
+    private getKanjiByName = async(request: Request, response: Response) => {
+        const name : string = request.params.name;
+        const kanji = await this.kanjiService.getKanjiByName(name);
+        if(typeof kanji === 'object' && kanji !== null) {
+        await this.kanjiService.updateKanjiView(kanji._id);
+        }
+        response.send(kanji);
+    }
+
+    private getPopularKanji = async(request: Request, response: Response) => {
+        const kanjis = await this.kanjiService.getPopularKanji();
+        response.send(kanjis);
+    }
 
     private getKanjiByGrade = async (
         request: Request,
